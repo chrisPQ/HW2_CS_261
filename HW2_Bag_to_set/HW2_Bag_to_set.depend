@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1674766755 source:c:\users\18163\documents\code\hw2\hw2_bag_to_set\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dynArray.h"
+
+1674766190 c:\users\18163\documents\code\hw2\hw2_helper\dynarray.h
+
+1674766832 source:c:\users\18163\documents\code\hw2\hw2_bag_to_set\bag2set.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dynArray.h"
+
+1674767295 source:c:\users\18163\documents\code\hw2\hw2_bag_to_set\dynarray.c
+	<assert.h>
+	<stdlib.h>
+	<stdio.h>
+	"dynArray.h"
+
