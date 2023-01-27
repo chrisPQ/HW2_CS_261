@@ -84,6 +84,16 @@ void deleteDynArr(DynArr *v)
 void _dynArrSetCapacity(DynArr *v, int newCap)
 {
 	/* FIXME: You will write this function */
+        TYPE * oldDataBuffer = v->data;
+        int oldSize = v->size;
+	int i;
+        initDynArr(v, 2*v->capacity);
+        for(i = 0; i < oldSize; i++) {
+            v->data[i] = oldDataBuffer[i];
+        }
+        v->size = oldSize;
+        free(oldDataBuffer);
+
 }
 
 /* Get the size of the dynamic array
@@ -292,4 +302,12 @@ int containsDynArr(DynArr *v, TYPE val)
 void removeDynArr(DynArr *v, TYPE val)
 {
 	/* FIXME: You will write this function */
+	int i;
+	for(i=0; i<v->size; i++) {
+        	if(v->data[i]==val) {
+           		removeAtDynArr(v, i);
+           		break;
+        	}
+    	}
+    v->size--;
 }

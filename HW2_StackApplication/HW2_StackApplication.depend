@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1674800766 source:c:\users\bestl\documents\program\c\cs_261\hw2_cs_261-main\hw2_stackapplication\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1674800681 source:c:\users\bestl\documents\program\c\cs_261\hw2_cs_261-main\hw2_stackapplication\dynarray.c
+	<assert.h>
+	<stdlib.h>
+	<stdio.h>
+	"dynArray.h"
+
+1674798726 c:\users\bestl\documents\program\c\cs_261\hw2_cs_261-main\hw2_stackapplication\dynarray.h
+
+1674800859 source:c:\users\bestl\documents\program\c\cs_261\hw2_cs_261-main\hw2_stackapplication\stackapp.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dynArray.h"
+

@@ -10,25 +10,25 @@ Using stack to check for unbalanced parentheses.
 ***************************************************************** */
 
 /* Returns the next character of the string, once reaches end return '0' (zero)
-	param: 	s pointer to a string 	
-	pre: s is not null		
+	param: 	s pointer to a string
+	pre: s is not null
 */
 char nextChar(char* s)
 {
-	static int i = -1;	
+	static int i = -1;
 	char c;
-	++i;	
-	c = *(s+i);			
+	++i;
+	c = *(s+i);
 	if ( c == '\0' )
-		return '\0';	
-	else 
+		return '\0';
+	else
 		return c;
 }
 
-/* Checks whether any occurrence of (, {, or [ are balanced 
+/* Checks whether any occurrence of (, {, or [ are balanced
    with the corresponding ), }, or ] respecting the LIFO principle
-	arguments: s pointer to an input string 	
-	pre-condition: s is not null	
+	arguments: s pointer to an input string
+	pre-condition: s is not null
 	post: return 1 for balanced s or 0 for unbalanced s
 */
 int isBalanced(char* s)
@@ -42,50 +42,92 @@ int isBalanced(char* s)
 	stack=newDynArr(100);/* initialize the stack with capacity = 100 */
 
 
-	if (s && strlen(s))
+	if (s && strlen(s)) {
 		while(1) /*infinite loop that has to be stopped explicitly*/
 		{
 			ch = nextChar(s); /*get the next character in the string*/
-			
+
                         /*stop the while loop when we reach the end of the string*/
 			if(ch==0 || ch=='\0') break;
-				 
- 
+
+			ts = stack->data[stack->size-1];
+
+            switch(ch) {
+                case '(':
+                    addDynArr(stack, ch);
+                break;
+                case '{':
+                    addDynArr(stack, ch);
+                break;
+                case '[':
+                    addDynArr(stack, ch);
+                break;
+                case ')':
+                    if(ts=='(') {
+                        removeAtDynArr(stack, stack->size-1);
+                    }
+                break;
+                case '}':
+                    if(ts=='{') {
+                        removeAtDynArr(stack, stack->size-1);
+                    }
+                break;
+                case ']':
+                    if(ts='[') {
+                        removeAtDynArr(stack, stack->size-1);
+                    }
+                break;
+
+
+            }
+
                         /* FIXME: You will write this part of the function */
+
+		}
+		if(stack->size>0) {
+            b=0;
+		}
 
 		}
 
 
         /* Free the memory allocated to the stack, and return b=1 or b=0 */
-
+        free(stack);
+        return b;
 	/* FIXME: You will write this part of the function */
 
 }
 
+void printStack(DynArr *s) {
+    int i;
+    for(i=0; i<s->size; i++) {
+        printf("%c ", s->data[i]);
+    }
+    printf("\n");
+}
+
 int main(int argc, char* argv[]){
 
-	char* s=argv[1];	
-	/*
-	char s[]="()+x+r*{{{((--{{[()[]]}}))}}}";	
-	*/
+	/*char* s=argv[1];*/
+
+	char s[]="()+x+r*{{{((--{{[()[]]}}))}}";
+
 
 	int res;
 
 	printf("Assignment 2\n");
-	
-	if(argc==2)
-	{
-		res = isBalanced(s);
+    /*if(argc==2) {*/
+        res = isBalanced(s);
 
-		if (res)
-			printf("The string %s is balanced\n",s);
-		else 
-			printf("The string %s is not balanced\n",s);
-	}
-	else
-		printf("Please enter a string to be evaluated.\n");
+        if (res)
+            printf("The string %s is balanced\n",s);
+        else
+            printf("The string %s is not balanced\n",s);
+   /* }
+    else {
+        printf("Please enter a string to be evaluated.\n");
+    }*/
 
-	
-	return 0;	
+	return 0;
 }
 
